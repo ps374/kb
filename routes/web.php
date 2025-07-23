@@ -10,3 +10,7 @@ Route::resource('tickets', TicketController::class)->middleware('auth');
 Route::prefix('admin')->middleware('admin')->group(function() {
     Route::resource('tickets', Admin\TicketAdminController::class)->except(['create', 'store']);
 });
+Route::prefix('admin')->middleware('admin')->group(function() {
+    Route::resource('articles', Admin\ArticleAdminController::class);
+    Route::resource('categories', Admin\CategoryAdminController::class)->except(['show', 'edit', 'update']);
+});
